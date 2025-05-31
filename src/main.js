@@ -52,8 +52,11 @@ class CSVImportAutomation {
     FileHelpers.ensureDirectoryExists('logs');
     FileHelpers.ensureDirectoryExists('screenshots');
 
-    // Validate CSV file
-    const csvPath = FileHelpers.validateCsvFile(config.csvFilePath);
+    // Validate CSV file with expected headers
+    const expectedHeaders = FileHelpers.getExpectedHeadersForImportType(config.importType);
+    const csvValidation = FileHelpers.validateCsvFile(config.csvFilePath, expectedHeaders);
+    
+    logger.info(`✅ CSV validation complete: ${csvValidation.lineCount} lines, headers: ${csvValidation.headers.join(', ')}`);
 
     // Initialize browser
     this.page = await this.browserManager.initialize();
