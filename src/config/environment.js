@@ -4,7 +4,7 @@ const config = {
   baseUrl: process.env.BASE_URL || 'https://dev.schedule.checkfirst.ai',
   username: process.env.USERNAME,
   password: process.env.PASSWORD,
-  csvFilePath: process.env.CSV_FILE_PATH || './data/schemes-template.csv',
+  csvFilePath: process.env.CSV_FILE_PATH || './data',
   importType: process.env.IMPORT_TYPE || 'schemes',
   headless: process.env.HEADLESS === 'true',
   screenshotOnError: process.env.SCREENSHOT_ON_ERROR !== 'false', // Default to true

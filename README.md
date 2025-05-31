@@ -71,7 +71,7 @@ puppeteer-csv-import/
    BASE_URL=https://dev.schedule.checkfirst.ai
    USERNAME=sherif+demo-13@checkfirst.ai
    PASSWORD=123456
-   CSV_FILE_PATH=./data/schemes-template.csv
+   CSV_FILE_PATH=./data
    IMPORT_TYPE=schemes
    HEADLESS=false
    ```
@@ -96,7 +96,7 @@ puppeteer-csv-import/
 | `BASE_URL` | Application base URL | `https://dev.schedule.checkfirst.ai` | ✅ |
 | `USERNAME` | Login email | - | ✅ |
 | `PASSWORD` | Login password | - | ✅ |
-| `CSV_FILE_PATH` | Path to CSV file | `./data/schemes-template.csv` | ✅ |
+| `CSV_FILE_PATH` | Path to CSV file | `./data` | ✅ |
 | `IMPORT_TYPE` | Type of import (schemes/projects/inspectors) | `schemes` | ✅ |
 | `HEADLESS` | Run browser in headless mode | `false` | ❌ |
 | `SCREENSHOT_ON_ERROR` | Take screenshots on errors | `true` | ❌ |
@@ -116,19 +116,20 @@ puppeteer-csv-import/
 ```bash
 npm start
 ```
-*Uses manual authentication: fills credentials automatically, pauses for you to click sign-in, then continues automation*
+*Imports all 3 CSV file types sequentially (schemes, projects, inspectors). Uses manual authentication: fills credentials automatically, pauses for you to click sign-in, then continues automation.*
 
 ### Other Commands
 ```bash
-npm run dev                # Development mode with debugging  
+npm run dev                # Development mode with debugging
 npm test                   # Dry run (config validation only)
 npm run debug              # Captures HTML for selector analysis
 ```
 
-### Custom CSV File
+### Custom CSV Directory
 ```bash
-CSV_FILE_PATH=./data/my-custom-file.csv npm start
+CSV_FILE_PATH=./data npm start
 ```
+*Automatically imports all 3 file types: schemes, projects, and inspectors*
 
 ## 📊 Monitoring & Debugging
 

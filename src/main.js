@@ -52,55 +52,112 @@ class CSVImportAutomation {
     FileHelpers.ensureDirectoryExists('logs');
     FileHelpers.ensureDirectoryExists('screenshots');
 
-    // Validate CSV file with expected headers
-    const expectedHeaders = FileHelpers.getExpectedHeadersForImportType(config.importType);
-    const csvValidation = FileHelpers.validateCsvFile(config.csvFilePath, expectedHeaders);
-    
-    logger.info(`✅ CSV validation complete: ${csvValidation.lineCount} lines, headers: ${csvValidation.headers.join(', ')}`);
+    // Prepare all import tasks
+    this.importTasks = this.prepareImportTasks();
+
+    logger.info(`📋 Prepared ${this.importTasks.length} import tasks: ${this.importTasks.map(t => t.type).join(', ')}`);
 
     // Initialize browser
     this.page = await this.browserManager.initialize();
   }
 
+  prepareImportTasks() {
+    const importTypes = ['schemes', 'projects', 'inspectors'];
+    const tasks = [];
+
+    for (const importType of importTypes) {
+      try {
+        const expectedHeaders = FileHelpers.getExpectedHeadersForImportType(importType);
+        const csvValidation = FileHelpers.validateCsvFile(config.csvFilePath, expectedHeaders, importType);
+
+        tasks.push({
+          type: importType,
+          filePath: csvValidation.path,
+          validation: csvValidation
+        });
+
+        logger.info(`✅ ${importType}: ${csvValidation.lineCount} lines, headers: ${csvValidation.headers.join(', ')}`);
+      } catch (error) {
+        logger.warn(`⚠️ Skipping ${importType}: ${error.message}`);
+      }
+    }
+
+    if (tasks.length === 0) {
+      throw new Error('No valid CSV files found for import');
+    }
+
+    return tasks;
+  }
+
   async executeImportWorkflow() {
-    // Step 1: Login
+    // Step 1: Login (once for all imports)
     const loginPage = new LoginPage(this.page);
     await loginPage.navigate(config.baseUrl);
     await loginPage.login(config.username, config.password);
     await this.browserManager.takeScreenshot('01-login-complete');
 
-    // Step 2: Navigate to Import and Select Type
+    // Step 2: Process each import task sequentially
+    for (let i = 0; i < this.importTasks.length; i++) {
+      const task = this.importTasks[i];
+      const taskNumber = i + 1;
+
+      logger.info(`📂 Starting import ${taskNumber}/${this.importTasks.length}: ${task.type}`);
+      logger.info(`📄 File: ${task.filePath}`);
+
+      try {
+        await this.executeImportTask(task, taskNumber);
+        logger.info(`✅ Completed import ${taskNumber}/${this.importTasks.length}: ${task.type}`);
+      } catch (error) {
+        logger.error(`❌ Failed import ${taskNumber}/${this.importTasks.length}: ${task.type} - ${error.message}`);
+
+        // Take screenshot on error but continue with next import
+        await this.browserManager.takeScreenshot(`error-import-${taskNumber}-${task.type}`);
+
+        // Optionally stop on first error or continue - for now continue
+        logger.warn(`⏭️ Continuing with next import...`);
+      }
+    }
+
+    logger.info(`🎉 Completed all imports: ${this.importTasks.length} total`);
+  }
+
+  async executeImportTask(task, taskNumber) {
+    const prefix = `${taskNumber.toString().padStart(2, '0')}-${task.type}`;
+
+    // Navigate to Import and Select Type
     const importHistoryPage = new ImportHistoryPage(this.page);
     await importHistoryPage.navigateToImport();
-    await importHistoryPage.selectImportType(config.importType);
-    await this.browserManager.takeScreenshot('02-import-type-selected');
+    await importHistoryPage.selectImportType(task.type);
+    await this.browserManager.takeScreenshot(`${prefix}-01-type-selected`);
 
-    // Step 3: Upload File
+    // Upload File
     const fileUploadPage = new FileUploadPage(this.page);
-    await fileUploadPage.uploadFile(config.csvFilePath);
+    await fileUploadPage.uploadFile(task.filePath);
     await fileUploadPage.proceedToPreview();
-    await this.browserManager.takeScreenshot('03-file-uploaded');
+    await this.browserManager.takeScreenshot(`${prefix}-02-file-uploaded`);
 
-    // Step 4: Validate Data
+    // Validate Data
     const previewPage = new PreviewPage(this.page);
     const isDataValid = await previewPage.validateDataReadiness();
 
     if (!isDataValid) {
-      throw new Error('Data validation failed - manual intervention required');
+      throw new Error(`Data validation failed for ${task.type} - manual intervention required`);
     }
 
     await previewPage.proceedToFinalStep();
-    await this.browserManager.takeScreenshot('04-data-validated');
+    await this.browserManager.takeScreenshot(`${prefix}-03-data-validated`);
 
-    // Step 5: Confirm Import
+    // Confirm Import
     const importConfirmationPage = new ImportConfirmationPage(this.page);
     await importConfirmationPage.confirmImport();
-    await this.browserManager.takeScreenshot('05-import-initiated');
+    await this.browserManager.takeScreenshot(`${prefix}-04-import-initiated`);
 
-    // Step 6: Wait for Completion
+    // Wait for Completion
     const success = await importConfirmationPage.waitForCompletion();
     if (success) {
-      await this.browserManager.takeScreenshot('06-import-completed');
+      await this.browserManager.takeScreenshot(`${prefix}-05-import-completed`);
+    } else {
+      throw new Error(`Import completion timeout for ${task.type}`);
     }
   }
 
