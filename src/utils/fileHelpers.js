@@ -26,7 +26,7 @@ class FileHelpers {
       // Read and validate CSV content
       const content = fs.readFileSync(absolutePath, 'utf8');
       const lines = content.split('\n').filter(line => line.trim().length > 0);
-      
+
       if (lines.length === 0) {
         throw new ValidationError(
           `CSV file contains no data: ${absolutePath}`,
@@ -38,19 +38,19 @@ class FileHelpers {
       if (expectedHeaders && expectedHeaders.length > 0) {
         const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
         const normalizedExpected = expectedHeaders.map(h => h.toLowerCase());
-        
-        const missingHeaders = normalizedExpected.filter(expected => 
+
+        const missingHeaders = normalizedExpected.filter(expected =>
           !headers.some(header => header.includes(expected))
         );
-        
+
         if (missingHeaders.length > 0) {
           throw new ValidationError(
             `CSV file missing required headers: ${missingHeaders.join(', ')}`,
-            { 
-              filePath: absolutePath, 
-              foundHeaders: headers, 
+            {
+              filePath: absolutePath,
+              foundHeaders: headers,
               expectedHeaders: normalizedExpected,
-              missingHeaders 
+              missingHeaders
             }
           );
         }
@@ -65,7 +65,7 @@ class FileHelpers {
       }
 
       logger.info(`✅ CSV file validated: ${absolutePath} (${stats.size} bytes, ${lines.length} lines)`);
-      
+
       return {
         path: absolutePath,
         size: stats.size,
@@ -93,11 +93,12 @@ class FileHelpers {
 
   static getExpectedHeadersForImportType(importType) {
     const headerMappings = {
-      'schemes': ['name', 'description', 'code'],
-      'projects': ['name', 'description', 'start_date', 'end_date'],
-      'inspectors': ['name', 'email', 'certification']
+      'schemes': ['name','category_name','periodicity','periodicity_type','rotation_after','rotation_after_type','window_size','window_size_type','code'],
+      'projects': ['order_reference','priority','customer_name','country','due_date','postcodes','standard_codes','duration'],
+      'inspectors': ['name','email','phone','address','city','postal_code','country','country_code','region','notes','location','type','role_name','days_capacity','days_capacity_period','travel_limit','competency_codes']
+
     };
-    
+
     return headerMappings[importType] || [];
   }
 }

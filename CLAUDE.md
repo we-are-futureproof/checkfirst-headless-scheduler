@@ -4,8 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Common Commands
 
-- **Start automation**: `npm start`
+- **Start automation**: `npm start` (uses manual authentication by default)
 - **Development with debugging**: `npm run dev`
+- **Debug mode (HTML capture)**: `npm run debug`
 - **Dry run (config validation)**: `npm test`
 - **Install dependencies**: `npm install` or `pnpm install`
 
@@ -19,6 +20,7 @@ This is a Puppeteer-based CSV import automation system for the CheckFirst schedu
 - **`src/config/environment.js`**: Centralized configuration management with comprehensive validation
 - **`src/utils/browser.js`**: Browser lifecycle management with request interception and screenshot capabilities
 - **`src/utils/BasePageObject.js`**: Base class providing retry logic, error handling, and common page operations
+- **`src/utils/ManualIntervention.js`**: Manual intervention system for authentication challenges
 - **`src/pages/`**: Page Object Model classes extending BasePageObject for specific UI interactions
 - **`src/errors/AutomationError.js`**: Custom error types with context and step information
 - **`src/constants/`**: Centralized selectors and messages for maintainability
@@ -41,8 +43,10 @@ Each step includes automatic retry logic, enhanced error context, and operation 
 
 ### Enhanced Features
 
+- **Manual Authentication Mode**: Handles anti-automation auth systems with user intervention
 - **Automatic Retry Logic**: 3 retry attempts with exponential backoff for transient failures
 - **CSV Header Validation**: Validates expected headers based on import type before upload
+- **HTML Debug Capture**: Captures page HTML for selector debugging when enabled
 - **Operation Timing**: Logs execution time for each operation for performance monitoring
 - **Enhanced Error Context**: Errors include step information, screenshots, and detailed context
 - **Improved Timeout Management**: Different timeouts for different operation types
@@ -52,9 +56,17 @@ Each step includes automatic retry logic, enhanced error context, and operation 
 Extended configuration with operation-specific timeouts and retry settings:
 - **Required**: `BASE_URL`, `USERNAME`, `PASSWORD`
 - **File & Import**: `CSV_FILE_PATH`, `IMPORT_TYPE`
-- **Behavior**: `HEADLESS`, `SCREENSHOT_ON_ERROR`
+- **Behavior**: `HEADLESS` (defaults to false for manual auth), `SCREENSHOT_ON_ERROR`
+- **Debug**: `DEBUG_HTML=true` (captures HTML for selector analysis)
 - **Timeouts**: `BROWSER_TIMEOUT`, `NAVIGATION_TIMEOUT`, `FILE_UPLOAD_TIMEOUT`, `VALIDATION_TIMEOUT`, `IMPORT_COMPLETION_TIMEOUT`
 - **Retry Settings**: `MAX_RETRIES`, `RETRY_DELAY`
+
+### Authentication Handling
+
+The system uses **manual authentication by default**:
+- **Default Behavior**: Fills credentials automatically, then pauses for user to complete sign-in manually
+- **Why Manual**: Many authentication systems (Auth0, Okta) block automation, so manual intervention is the most reliable approach
+- **Debug Mode**: `DEBUG_HTML=true` - Captures HTML for selector debugging
 
 ### File Structure Context
 

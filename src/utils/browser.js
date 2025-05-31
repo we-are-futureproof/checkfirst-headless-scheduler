@@ -23,15 +23,8 @@ class BrowserManager {
       this.page.setDefaultTimeout(config.timeouts.browser);
       this.page.setDefaultNavigationTimeout(config.timeouts.navigation);
 
-      // Enable request interception for better debugging
-      await this.page.setRequestInterception(true);
-      this.page.on('request', (req) => {
-        if (req.resourceType() === 'stylesheet' || req.resourceType() === 'font') {
-          req.abort();
-        } else {
-          req.continue();
-        }
-      });
+      // Skip request interception in default manual mode for better compatibility
+      logger.info('📄 Manual authentication mode: Request interception disabled for compatibility');
 
       logger.info('Browser initialized successfully');
       return this.page;

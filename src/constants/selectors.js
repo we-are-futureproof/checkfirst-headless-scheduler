@@ -1,8 +1,8 @@
 const SELECTORS = {
   LOGIN: {
-    EMAIL_INPUT: 'input[type="email"], input[name="email"]',
-    PASSWORD_INPUT: 'input[type="password"], input[name="password"]',
-    SIGN_IN_BUTTON: 'button:has-text("Sign in"), button[type="submit"]'
+    EMAIL_INPUT: 'input[type="email"], input[name="email"], input[placeholder*="email" i]',
+    PASSWORD_INPUT: 'input[type="password"], input[name="password"], input[placeholder*="password" i]',
+    SIGN_IN_BUTTON: 'button[type="submit"], button:text("Sign in"), xpath=//button[contains(text(), "Sign in")]'
   },
   
   IMPORT: {

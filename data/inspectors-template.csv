@@ -1,0 +1,17 @@
+name,email,phone,address,city,postal_code,country,country_code,region,notes,location,type,role_name,days_capacity,days_capacity_period,travel_limit,competency_codes
+Roberto Johnson,inspector1@domain.com,01868483396,5159 Tom Roads Suite 330,Davebury,49267,United Kingdom,GB,Scotland,notes,"56.604,14.5021",EXTERNAL,Junior Inspector,2,WEEK,100,BRC03
+Faith Cabrera,inspector2@domain.com,13991615109,173 Sharon Brooks,Oliverview,09676,Germany,DE,Berlin,notes,"-37.7407,-111.8191",INTERNAL,Lead Auditor,5,WEEK,100,BRC03
+Matthew Bell,inspector3@domain.com,57923022584,207 Mccullough Well Suite 564,New Hannah,60525,United Kingdom,GB,Scotland,notes,"-77.5647,64.3406",INTERNAL,Senior Inspector,2,WEEK,30,BRC03
+Gabriella Williams,inspector4@domain.com,59924661093,76960 Savage Port,Bartonton,22216,Spain,ES,Catalonia,notes,"3.9222,-95.2194",INTERNAL,Quality Reviewer,3,WEEK,100,BRC03
+David Moore,inspector5@domain.com,06381206650,891 David Run,Port Kevin,90749,United States,US,NY,notes,"-1.322,50.8309",EXTERNAL,Lead Auditor,3,WEEK,100,BRC03
+Ariel Nash,inspector6@domain.com,28512400034,097 Bowman Landing Apt. 369,Alanberg,36070,Germany,DE,Bavaria,notes,"62.114,-92.5072",EXTERNAL,Lead Auditor,5,WEEK,30,BRC03
+Richard Higgins,inspector7@domain.com,56824173042,5461 Ann Orchard Suite 551,Wilsonfort,56407,United States,US,CA,notes,"-30.1435,113.7287",INTERNAL,Senior Inspector,5,WEEK,30,BRC03
+George Mcdaniel,inspector8@domain.com,60168847793,49263 Wilson View Apt. 873,South Raymondborough,84517,Spain,ES,Madrid,notes,"-85.1946,48.6",INTERNAL,Junior Inspector,2,WEEK,60,BRC03
+Travis Lewis,inspector9@domain.com,96687577389,550 Nancy Rapids Apt. 694,Jonesland,68203,Germany,DE,Berlin,notes,"18.9908,-109.9473",INTERNAL,Lead Auditor,3,WEEK,30,BRC04
+Amanda Perez,inspector10@domain.com,86880918916,6993 Diane Alley Apt. 489,Marvinfort,34842,Spain,ES,Madrid,notes,"7.9624,43.416",EXTERNAL,Lead Auditor,2,WEEK,30,BRC05
+Elizabeth Russell,inspector11@domain.com,50076279125,7017 Andrew Rapid Apt. 518,Jamesfort,15049,Germany,DE,Bavaria,notes,"-11.5076,-158.0247",EXTERNAL,Lead Auditor,5,WEEK,30,BRC06
+Lisa Mcdonald,inspector12@domain.com,64183067537,74089 Jerry Trail,Hunterville,19596,United Kingdom,GB,Scotland,notes,"-25.46,83.3754",INTERNAL,Senior Inspector,2,WEEK,100,BRC06
+Keith Livingston,inspector13@domain.com,60754151150,35192 Aaron Shoals,Lake Adrianstad,90870,Spain,ES,Madrid,notes,"-28.3837,-89.7526",EXTERNAL,Senior Inspector,2,WEEK,60,BRC06
+Larry Villarreal,inspector14@domain.com,74485291189,23583 Kari Highway Suite 602,South Christianland,17805,Germany,DE,Bavaria,notes,"26.808,-40.0888",EXTERNAL,Senior Inspector,5,WEEK,100,BRC06
+Juan Yang,inspector15@domain.com,66065735471,89276 Katrina Meadows Apt. 375,West Steven,84033,Spain,ES,Catalonia,notes,"43.4834,-59.07",INTERNAL,Quality Reviewer,3,WEEK,30,BRC07
+Paul Phillips,inspector16@domain.com,89267173864,004 Fox Prairie Suite 714,Justinborough,78542,United States,US,NY,notes,"19.8244,62.4252",INTERNAL,Field Agent,3,WEEK,100,BRC07

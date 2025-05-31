@@ -52,6 +52,8 @@ build/
 
 # Browser artifacts
 .puppeteerrc.cjs
+screenshots/
+debug/
 
 # temp AI artifacts
 RECS.md

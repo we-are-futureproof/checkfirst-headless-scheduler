@@ -1,0 +1,8 @@
+name,category_name,periodicity,periodicity_type,rotation_after,rotation_after_type,window_size,window_size_type,code
+BRC01,Health,3,YEAR,1,YEAR,3,MONTH,REF_HEALTH
+BRC02,Energy,3,YEAR,1,YEAR,3,MONTH,REF_ENERGY
+BRC03,Agriculture,3,YEAR,1,YEAR,3,MONTH,REF_AGRI
+BRC04,Transport,3,YEAR,1,YEAR,3,MONTH,REF_TRANSPORT
+BRC05,Food,3,YEAR,1,YEAR,1,MONTH,REF_FOOD
+BRC06,Finance,3,YEAR,1,YEAR,3,MONTH,REF_FINANCE
+BRC07,Telecom,3,YEAR,1,YEAR,3,MONTH,REF_TELECOM

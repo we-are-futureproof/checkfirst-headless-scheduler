@@ -116,25 +116,18 @@ puppeteer-csv-import/
 ```bash
 npm start
 ```
+*Uses manual authentication: fills credentials automatically, pauses for you to click sign-in, then continues automation*
 
-### Development Mode (with debugging)
+### Other Commands
 ```bash
-npm run dev
-```
-
-### Dry Run (validate config only)
-```bash
-npm test
+npm run dev                # Development mode with debugging  
+npm test                   # Dry run (config validation only)
+npm run debug              # Captures HTML for selector analysis
 ```
 
 ### Custom CSV File
 ```bash
 CSV_FILE_PATH=./data/my-custom-file.csv npm start
-```
-
-### Headless Mode
-```bash
-HEADLESS=true npm start
 ```
 
 ## 📊 Monitoring & Debugging
@@ -155,6 +148,7 @@ HEADLESS=true npm start
 - Verify credentials in `.env`
 - Check if account is locked
 - Ensure base URL is correct
+- **Note**: The system uses manual authentication by default to handle anti-automation protection
 
 **File upload fails**
 - Verify CSV file exists and is readable
