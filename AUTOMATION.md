@@ -1,5 +1,5 @@
 # Automation-Friendly Development Guidelines
-## Making CheckFirst Testable with Minimal Code Changes
+## Making ScheduleAI Testable with Minimal Code Changes
 
 ### Executive Summary
 
@@ -223,7 +223,7 @@ const memberExists = await page.$(`[data-testid="member-${memberId}"]`) !== null
 
 ---
 
-## Specific CheckFirst Recommendations
+## Specific ScheduleAI Recommendations
 
 ### 1. Member/Inspector Management
 ```jsx

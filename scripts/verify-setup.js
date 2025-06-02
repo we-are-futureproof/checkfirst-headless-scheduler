@@ -11,7 +11,7 @@ const path = require('path');
 const isInScriptsFolder = __dirname.endsWith('scripts');
 const projectRoot = isInScriptsFolder ? path.join(__dirname, '..') : __dirname;
 
-console.log('🔍 CheckFirst Automation Setup Verification\n');
+console.log('🔍 ScheduleAI Automation Setup Verification\n');
 
 // Test 1: Check required files exist
 const requiredFiles = [

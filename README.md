@@ -1,6 +1,6 @@
-# CheckFirst CSV Import Automation
+# ScheduleAI CSV Import Automation
 
-Automated CSV file import and validation system using Puppeteer for the CheckFirst scheduling application.
+Automated CSV file import and validation system using Puppeteer for the ScheduleAI application by CheckFirst.
 
 ## 🎯 Purpose
 
@@ -50,7 +50,7 @@ checkfirst-headless-scheduler/
 - Node.js 16+ installed
 - pnpm package manager
 - Chrome/Chromium browser
-- Access to CheckFirst dev environment
+- Access to ScheduleAI dev environment
 
 ### Installation
 
@@ -169,7 +169,7 @@ pnpm debug      # Debug mode with HTML capture for analysis
 
 ### Solution: App Modernization 🚀
 
-The most effective path forward is updating the CheckFirst app to be automation-friendly.
+The most effective path forward is updating the ScheduleAI app to be automation-friendly.
 
 **See:** `AUTOMATION.md`
 
@@ -270,7 +270,7 @@ DEBUG_HTML=true pnpm [command]
 
 ### For Long-term Success
 1. **Review**: `AUTOMATION.md`
-2. **Implement**: Test ID strategy in CheckFirst app
+2. **Implement**: Test ID strategy in ScheduleAI app
 3. **Result**: 99% reliable end-to-end automation
 
 ## 📋 Project Handoff

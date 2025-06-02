@@ -1,7 +1,7 @@
 {
-  "name": "puppeteer-csv-import",
+  "name": "scheduleai-csv-import",
   "version": "1.0.0",
-  "description": "Automated CSV import system using Puppeteer",
+  "description": "Automated CSV import system for ScheduleAI using Puppeteer",
   "main": "src/main.js",
   "scripts": {
     "start": "HEADLESS=false node src/main.js",
