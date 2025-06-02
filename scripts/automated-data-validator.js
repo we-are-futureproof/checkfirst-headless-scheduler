@@ -372,14 +372,19 @@ async function validateImportedData() {
       console.log('\nSOME DATA VALIDATION ISSUES - Check details above');
     }
     
-    // Save results
+    // Save results to logs directory
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    fs.writeFileSync(
-      `validation-results-${timestamp}.json`, 
-      JSON.stringify(results, null, 2)
-    );
+    const logsDir = path.join(projectRoot, 'logs');
+    const resultFile = path.join(logsDir, `validation-results-${timestamp}.json`);
     
-    console.log(`\nDetailed results saved to validation-results-${timestamp}.json`);
+    // Ensure logs directory exists
+    if (!fs.existsSync(logsDir)) {
+      fs.mkdirSync(logsDir, { recursive: true });
+    }
+    
+    fs.writeFileSync(resultFile, JSON.stringify(results, null, 2));
+    
+    console.log(`\nDetailed results saved to logs/validation-results-${timestamp}.json`);
     console.log('Screenshots saved for manual verification');
     console.log('===========================================');
     

@@ -57,4 +57,7 @@ debug/
 
 # temp AI artifacts
 RECS.md
-.claude
+.claude# Validation results and debug logs
+logs/validation-*.json
+logs/pagination-*.json
+logs/validation-flow-*.json

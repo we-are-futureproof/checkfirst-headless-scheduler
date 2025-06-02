@@ -253,6 +253,8 @@ DEBUG_HTML=true pnpm [command]
 ### Debug Resources
 
 - **Logs**: Check `logs/` directory for detailed execution logs
+- **Validation results**: JSON reports saved to `logs/validation-results-*.json`
+- **Recording data**: Navigation flows saved to `logs/*-flow-*.json`
 - **Screenshots**: Review `screenshots/` for visual debugging
 - **Recording tools**: Use `pnpm record-*` commands to understand UI patterns
 

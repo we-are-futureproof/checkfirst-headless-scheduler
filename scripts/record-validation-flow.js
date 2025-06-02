@@ -122,7 +122,13 @@ async function recordValidationFlow() {
     // Save validation flow
     if (validationSteps.length > 0) {
       const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-      const outputFile = `validation-flow-${timestamp}.json`;
+      const logsDir = path.join(projectRoot, 'logs');
+      const outputFile = path.join(logsDir, `validation-flow-${timestamp}.json`);
+      
+      // Ensure logs directory exists
+      if (!fs.existsSync(logsDir)) {
+        fs.mkdirSync(logsDir, { recursive: true });
+      }
       
       // Group steps by URL for analysis
       const pageAnalysis = {};
@@ -151,7 +157,7 @@ async function recordValidationFlow() {
       console.log('\n===========================================');
       console.log('VALIDATION FLOW RECORDED');
       console.log('===========================================');
-      console.log(`📁 Saved ${validationSteps.length} steps to: ${outputFile}`);
+      console.log(`📁 Saved ${validationSteps.length} steps to: logs/${path.basename(outputFile)}`);
       console.log(`📄 Visited ${Object.keys(pageAnalysis).length} different pages`);
       
       // Show page analysis

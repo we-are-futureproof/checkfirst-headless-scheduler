@@ -1,6 +1,10 @@
 const config = require('../src/config/environment');
 const BrowserManager = require('../src/utils/browser');
 const fs = require('fs');
+const path = require('path');
+
+// Determine project root directory
+const projectRoot = path.join(__dirname, '..');
 
 async function recordPagination() {
   const browserManager = new BrowserManager();
@@ -98,7 +102,13 @@ async function recordPagination() {
     // Save pagination flow
     if (paginationSteps.length > 0) {
       const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-      const outputFile = `pagination-flow-${timestamp}.json`;
+      const logsDir = path.join(projectRoot, 'logs');
+      const outputFile = path.join(logsDir, `pagination-flow-${timestamp}.json`);
+      
+      // Ensure logs directory exists
+      if (!fs.existsSync(logsDir)) {
+        fs.mkdirSync(logsDir, { recursive: true });
+      }
       
       // Group steps by URL for analysis
       const pageAnalysis = {};
@@ -123,7 +133,7 @@ async function recordPagination() {
       console.log('\n===========================================');
       console.log('PAGINATION FLOW RECORDED');
       console.log('===========================================');
-      console.log(`📁 Saved ${paginationSteps.length} steps to: ${outputFile}`);
+      console.log(`📁 Saved ${paginationSteps.length} steps to: logs/${path.basename(outputFile)}`);
       console.log(`📄 Visited ${Object.keys(pageAnalysis).length} different pages`);
       
       // Show page analysis
