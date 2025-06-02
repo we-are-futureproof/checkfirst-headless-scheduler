@@ -6,8 +6,8 @@ const SELECTORS = {
   },
   
   IMPORT: {
-    IMPORT_BUTTON: 'button:has-text("Import"), a:has-text("Import")',
-    NEXT_BUTTON: 'button:has-text("Next")',
+    IMPORT_BUTTON: 'button.MuiButton-contained:has-text("Import"), button[role="button"]:has-text("Import"), button:has-text("Import"), a:has-text("Import")',
+    NEXT_BUTTON: 'button:has-text("Next"), button.MuiButton-contained:has-text("Next")',
     FILE_TYPE_MODAL: 'text=Select the file type',
     RADIO_BUTTON: (type) => `input[type="radio"][value="${type}"], label:has-text("${type}") input[type="radio"]`
   },
