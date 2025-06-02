@@ -13,7 +13,7 @@ This project provides automated tools for:
 ## 📁 Project Structure
 
 ```
-checkfirst-automation/
+checkfirst-headless-scheduler/
 ├── src/                           # Core automation framework
 │   ├── config/environment.js      # Environment configuration
 │   ├── pages/                     # Page Object Model classes
