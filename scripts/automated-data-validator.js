@@ -1,6 +1,10 @@
 const config = require('../src/config/environment');
 const BrowserManager = require('../src/utils/browser');
 const fs = require('fs');
+const path = require('path');
+
+// Determine project root directory
+const projectRoot = path.join(__dirname, '..');
 
 // Parse CSV data for validation
 function parseCSVData(filePath) {
@@ -49,7 +53,7 @@ async function validateImportedData() {
     // Validation 1: INSPECTORS - Team > Members
     console.log('\nValidating INSPECTORS data...');
     try {
-      const csvData = parseCSVData('../data/inspectors-template.csv');
+      const csvData = parseCSVData(path.join(projectRoot, 'data/inspectors-template.csv'));
       console.log(`Expected ${csvData.count} inspectors`);
       
       // Navigate: Team > Members (based on your recording)
@@ -149,7 +153,7 @@ async function validateImportedData() {
     // Validation 2: SCHEMES - Look in competency categories (from your recording)
     console.log('\nValidating SCHEMES data...');
     try {
-      const csvData = parseCSVData('../data/schemes-template.csv');
+      const csvData = parseCSVData(path.join(projectRoot, 'data/schemes-template.csv'));
       console.log(`Expected ${csvData.count} schemes`);
       
       // Navigate: Team > Competency categories (based on your recording)
@@ -244,7 +248,7 @@ async function validateImportedData() {
     // Validation 3: PROJECTS - Try Projects page
     console.log('\nValidating PROJECTS data...');
     try {
-      const csvData = parseCSVData('../data/projects-template.csv');
+      const csvData = parseCSVData(path.join(projectRoot, 'data/projects-template.csv'));
       console.log(`Expected ${csvData.count} projects`);
       
       // Navigate to Projects

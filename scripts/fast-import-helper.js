@@ -35,9 +35,9 @@ async function fastImportHelper() {
     console.log('READY FOR IMPORT');
     console.log('===========================================');
     console.log('CSV Files to import:');
-    console.log(`- Schemes: ${path.resolve('../data/schemes-template.csv')}`);
-    console.log(`- Projects: ${path.resolve('../data/projects-template.csv')}`);
-    console.log(`- Inspectors: ${path.resolve('../data/inspectors-template.csv')}`);
+    console.log(`- Schemes: ${path.resolve(path.join(__dirname, '../data/schemes-template.csv'))}`);
+    console.log(`- Projects: ${path.resolve(path.join(__dirname, '../data/projects-template.csv'))}`);
+    console.log(`- Inspectors: ${path.resolve(path.join(__dirname, '../data/inspectors-template.csv'))}`);
     console.log('\n1. Click "Import" button');
     console.log('2. Select type, upload file, follow wizard');
     console.log('3. Repeat for other types');

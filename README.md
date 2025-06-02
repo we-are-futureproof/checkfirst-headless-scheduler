@@ -88,11 +88,6 @@ All scripts are validated and ready to use. Run `pnpm verify` to confirm your se
 pnpm fast
 # Fills credentials, waits for manual sign-in, guides through CSV upload
 # Success rate: 100% | Files: schemes, projects, inspectors
-
-# Import Verification  
-pnpm check-history
-# Verifies CSV imports completed successfully in the database
-# Success rate: 100% | Confirms backend import completion
 ```
 
 ### ⚠️ Partial Functionality (Requires App Updates)
@@ -127,7 +122,6 @@ pnpm debug      # Debug mode with HTML capture for analysis
 | Command | Purpose | Reliability | Notes |
 |---------|---------|-------------|-------|
 | `pnpm fast` | CSV Import | 100% ✅ | **Recommended** - Manual auth |
-| `pnpm check-history` | Import Verification | 100% ✅ | **Recommended** - Backend validation |
 | `pnpm validate-data` | UI Validation | 60-70% ⚠️ | Needs app test IDs |
 | `pnpm verify` | Setup Check | 100% ✅ | Run before first use |
 | `pnpm test` | Config Check | 100% ✅ | Dry run validation |
@@ -186,17 +180,13 @@ The most effective path forward is updating the CheckFirst app to be automation-
 ### Basic CSV Import Workflow
 
 ```bash
-# 1. Import CSV files (recommended approach)
+# Import CSV files (recommended approach)
 pnpm fast
 # Follow the guided process:
 # - Browser opens and fills credentials
 # - You manually click "Sign In" 
 # - Automation guides through uploading 3 CSV files
 # - Process completes automatically
-
-# 2. Verify imports were successful
-pnpm check-history
-# Checks import history page for 100% completion rates
 ```
 
 ### Development and Debugging
@@ -270,8 +260,7 @@ DEBUG_HTML=true pnpm [command]
 
 ### For Immediate Use
 1. Use `pnpm fast` for reliable CSV imports
-2. Use `pnpm check-history` for import verification
-3. Manual validation of UI data until app updates
+2. Manual validation of imported data until app updates
 
 ### For Long-term Success
 1. **Review**: `AUTOMATION.md`

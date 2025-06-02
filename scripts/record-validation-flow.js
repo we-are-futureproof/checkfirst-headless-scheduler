@@ -1,6 +1,10 @@
 const config = require('../src/config/environment');
 const BrowserManager = require('../src/utils/browser');
 const fs = require('fs');
+const path = require('path');
+
+// Determine project root directory
+const projectRoot = path.join(__dirname, '..');
 
 // Parse CSV data for validation
 function parseCSVData(filePath) {
@@ -69,9 +73,9 @@ async function recordValidationFlow() {
     
     // Parse CSV data for reference
     const csvData = {
-      schemes: parseCSVData('../data/schemes-template.csv'),
-      projects: parseCSVData('../data/projects-template.csv'),
-      inspectors: parseCSVData('../data/inspectors-template.csv')
+      schemes: parseCSVData(path.join(projectRoot, 'data/schemes-template.csv')),
+      projects: parseCSVData(path.join(projectRoot, 'data/projects-template.csv')),
+      inspectors: parseCSVData(path.join(projectRoot, 'data/inspectors-template.csv'))
     };
     
     console.log('\n===========================================');

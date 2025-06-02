@@ -9,7 +9,6 @@
     "test": "node src/main.js --dry-run",
     "debug": "DEBUG_HTML=true HEADLESS=false node src/main.js",
     "fast": "HEADLESS=false node scripts/fast-import-helper.js",
-    "check-history": "HEADLESS=false node scripts/history-validator.js",
     "validate-data": "HEADLESS=false node scripts/automated-data-validator.js",
     "record-pagination": "HEADLESS=false node scripts/record-pagination.js",
     "record-validation": "HEADLESS=false node scripts/record-validation-flow.js",

@@ -22,7 +22,6 @@ const requiredFiles = [
   'data/inspectors-template.csv',
   'src/config/environment.js',
   'scripts/fast-import-helper.js',
-  'scripts/history-validator.js',
   'scripts/automated-data-validator.js'
 ];
 
@@ -41,7 +40,7 @@ requiredFiles.forEach(file => {
 // Test 2: Check package.json scripts
 console.log('\n✅ Checking package.json scripts...');
 const packageJson = JSON.parse(fs.readFileSync(path.join(projectRoot, 'package.json'), 'utf8'));
-const expectedScripts = ['fast', 'check-history', 'validate-data', 'record-pagination'];
+const expectedScripts = ['fast', 'validate-data', 'record-pagination'];
 expectedScripts.forEach(script => {
   if (packageJson.scripts[script]) {
     console.log(`  ✓ ${script}: ${packageJson.scripts[script]}`);
@@ -111,7 +110,6 @@ console.log('\n✅ Checking script syntax...');
 const { execSync } = require('child_process');
 const scripts = [
   'scripts/fast-import-helper.js',
-  'scripts/history-validator.js', 
   'scripts/automated-data-validator.js'
 ];
 
@@ -132,7 +130,6 @@ if (allFilesExist) {
   console.log('🎉 SETUP VERIFICATION PASSED');
   console.log('\nYou can now run:');
   console.log('  pnpm fast           # CSV import automation');
-  console.log('  pnpm check-history  # Verify imports');
   console.log('  pnpm validate-data  # UI validation (partial)');
 } else {
   console.log('❌ SETUP VERIFICATION FAILED');
