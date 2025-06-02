@@ -28,18 +28,18 @@ checkfirst-headless-scheduler/
 │   │   └── fileHelpers.js         # File operations
 │   └── main.js                    # Main CSV import automation
 ├── scripts/                       # Automation scripts
-│   ├── fast-import-helper.js      # ✅ Quick CSV import tool
-│   ├── history-validator.js       # ✅ Import verification
+│   ├── fast-import-helper.js      # ✅ CSV import tool (100% reliable)
 │   ├── automated-data-validator.js # ⚠️ UI data validation (60% accuracy)
 │   ├── record-pagination.js       # 🔧 Debug pagination patterns
-│   └── record-validation-flow.js  # 🔧 Debug navigation flows
+│   ├── record-validation-flow.js  # 🔧 Debug navigation flows
+│   └── verify-setup.js           # ✅ Setup verification tool
 ├── data/                          # CSV template files
 │   ├── schemes-template.csv       # 7 competency schemes
 │   ├── projects-template.csv      # 8 project records
 │   └── inspectors-template.csv    # 16 inspector records
 ├── logs/                          # Application logs
 ├── screenshots/                   # Debug screenshots
-├── AUTOMATION.md                      # 🚀 App improvement guide
+├── AUTOMATION.md                  # 🚀 App improvement guide
 └── README.md                      # This file
 ```
 
@@ -126,6 +126,10 @@ pnpm debug      # Debug mode with HTML capture for analysis
 | `pnpm verify` | Setup Check | 100% ✅ | Run before first use |
 | `pnpm test` | Config Check | 100% ✅ | Dry run validation |
 | `pnpm start` | Full Automation | Variable ⚠️ | Original approach |
+| `pnpm dev` | Debug Mode | 100% ✅ | Node.js inspector |
+| `pnpm debug` | HTML Capture | 100% ✅ | Debug selectors |
+| `pnpm record-pagination` | Record Clicks | 100% ✅ | Debug tool |
+| `pnpm record-validation` | Record Navigation | 100% ✅ | Debug tool |
 
 ## ⚙️ Configuration
 

@@ -22,7 +22,10 @@ const requiredFiles = [
   'data/inspectors-template.csv',
   'src/config/environment.js',
   'scripts/fast-import-helper.js',
-  'scripts/automated-data-validator.js'
+  'scripts/automated-data-validator.js',
+  'scripts/record-pagination.js',
+  'scripts/record-validation-flow.js',
+  'scripts/verify-setup.js'
 ];
 
 console.log('✅ Checking required files...');
@@ -40,7 +43,7 @@ requiredFiles.forEach(file => {
 // Test 2: Check package.json scripts
 console.log('\n✅ Checking package.json scripts...');
 const packageJson = JSON.parse(fs.readFileSync(path.join(projectRoot, 'package.json'), 'utf8'));
-const expectedScripts = ['fast', 'validate-data', 'record-pagination'];
+const expectedScripts = ['fast', 'validate-data', 'record-pagination', 'record-validation', 'verify'];
 expectedScripts.forEach(script => {
   if (packageJson.scripts[script]) {
     console.log(`  ✓ ${script}: ${packageJson.scripts[script]}`);
